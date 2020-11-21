@@ -10,6 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CheckInScreen from '../screens/CheckInScreen';
 import { BottomTabParamList, TabHomeParamList, TabThreeParamList, TabTwoParamList } from '../types';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
+import { boldFontFamily, defaultFontFamily } from '../components/Themed';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -61,7 +62,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home Screen Title' }}
+        options={{ headerTitle: 'Home Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </HomeStack.Navigator>
   );
@@ -75,7 +76,7 @@ function CheckInNavigator() {
       <CheckInStack.Screen
         name="CheckInScreen"
         component={CheckInScreen}
-        options={{ headerTitle: 'Check In Screen Title' }}
+        options={{ headerTitle: 'Check In Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </CheckInStack.Navigator>
   );
@@ -89,7 +90,7 @@ function ProfileNavigator() {
       <ProfileStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile Screen Title' }}
+        options={{ headerTitle: 'Profile Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </ProfileStack.Navigator>
   );
