@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mysobercompanion-dev-144556-authRole",
+      "UnauthRoleArn": "arn:aws:iam::570892984421:role/amplify-mysobercompanion-dev-144556-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::570892984421:role/amplify-mysobercompanion-dev-144556-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-mysobercompanion-dev-144556-deployment",
+      "UnauthRoleName": "amplify-mysobercompanion-dev-144556-unauthRole",
+      "StackName": "amplify-mysobercompanion-dev-144556",
+      "StackId": "arn:aws:cloudformation:us-east-1:570892984421:stack/amplify-mysobercompanion-dev-144556/2ddc6ea0-2c32-11eb-88b7-12909bffa46d",
+      "AmplifyAppId": "denw7tp27qi04"
+    }
+  }
+}
