@@ -4,6 +4,7 @@ import { Modal, ScrollView, StyleSheet, Image } from 'react-native';
 import { Button, Text, View } from '../components/Themed';
 import PlaceholderMap from '../assets/images/map.png'
 import { DataTable } from 'react-native-paper';
+import Accordion from '../components/Accordion';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -159,13 +160,12 @@ export function ProfileCurrentStatus(){
       <Separator></Separator>
       <Text style={styles.title}>Current Status</Text>
       <Separator></Separator>
-      <Text style={styles.subtitle}>Current Location</Text>
-      <View style={styles.container}>
-        <Image style={styles.image} source={{uri: PlaceholderMap}}/>
-      </View>
-      <Separator></Separator>
-      <Text style={styles.subtitle}>Current Health Metrics</Text>
-      <HealthMetricsTable/>
+      <Accordion title={<Text style={styles.subtitle}>Current Location</Text>} style={styles.paper}>
+          <Image style={styles.image} source={{uri: PlaceholderMap}}/>
+        </Accordion>
+        <Accordion title={<Text style={styles.subtitle}>Current Health Metrics</Text>} style={styles.paper}>
+          <HealthMetricsTable/>
+        </Accordion>
     </View>
   )
 }
@@ -219,5 +219,14 @@ const styles = StyleSheet.create({
     elevation: 2,
     borderColor: 'transparent',
     borderWidth: 0
+  },
+  paper: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    padding: 5,
   }
 });
