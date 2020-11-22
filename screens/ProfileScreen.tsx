@@ -4,11 +4,62 @@ import { Modal, ScrollView, StyleSheet, Image } from 'react-native';
 import { Button, Text, View } from '../components/Themed';
 import PlaceholderMap from '../assets/images/map.png'
 import { DataTable } from 'react-native-paper';
-import Accordion from '../components/Accordion';
+import P1 from '../assets/images/phoenix/1.png';
+import P2 from '../assets/images/phoenix/2.png';
+import P3 from '../assets/images/phoenix/3.png';
+import P4 from '../assets/images/phoenix/4.png';
+import P5 from '../assets/images/phoenix/5.png';
+import P6 from '../assets/images/logo.png';
 
 const Separator = () => (
   <View style={styles.separator} />
 );
+
+interface Badge {
+  name: string;
+  picture: string;
+  requirement: string;
+  date: string;
+}
+
+const badges: Badge[] = [
+  {
+    name: 'Egg',
+    picture: P1,
+    requirement: 'Hourly Check In',
+    date: '10/02/2020',
+  },
+  {
+    name: 'Hatchling',
+    picture: P2,
+    requirement: '3 Hour Check In',
+    date: '10/08/2020',
+  },
+  {
+    name: 'Fledgling',
+    picture: P3,
+    requirement: '6 Hour Check In',
+    date: '10/29/2020',
+  },
+  {
+    name: 'Firecracker',
+    picture: P4,
+    requirement: '12 Hour Check In',
+    date: '11/20/2020',
+  },
+  {
+    name: 'Firebird',
+    picture: P5,
+    requirement: 'Daily Check In',
+    date: '',
+  },
+  {
+    name: 'Phoenix',
+    picture: P6,
+    requirement: 'Weekly Check In',
+    date: '',
+  },
+];
 
 export default function ProfileScreen() {
   const [isManageTeamOpen, setIsManageTeamOpen] = useState(false);
@@ -44,13 +95,15 @@ export default function ProfileScreen() {
           {!isManageTeamOpen && !isManageDenyOpen && !isCurrentStatusOpen &&
             <View style={styles.container}>
               <Separator/>
-              <Text style={styles.title}>Manage Profile Details</Text>
+              <Text style={styles.title}>Manage Profile</Text>
               <Separator/>
-              <Button style={styles.button} title="Login and Security" onPress={onPress}/>
-              <Button style={styles.button} title="Manage Team" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
-              <Button style={styles.button} title="Manage Denylist" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)}/>
-              <Button style={styles.button} title="Current Status" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)}/>
+              <Button style={styles.button} title="Login and Security >" onPress={onPress}/>
+              <Button style={styles.button} title="Manage Team >" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
+              <Button style={styles.button} title="Manage Denylist >" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)}/>
+              <Button style={styles.button} title="Current Status >" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)}/>
               <Separator/>
+              <Image style={styles.titleImage} source={P6}/>
+              <Separator></Separator>
             </View>
           }
         </View>
@@ -64,11 +117,10 @@ export function ProfileManageTeam(){
     alert('Change team member settings');
   }
   function onPress2() {
-    alert('Add more team members');
+    alert('Add or Remove team members');
   }
   return (
     <View style={styles.container}>
-      <Separator/>
       <Text style={styles.title}>Manage Team Members</Text>
       <Separator/>
       <Text style={styles.subtitle}>Team Member: Mom</Text>
@@ -79,13 +131,11 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
-      <Separator/>
       <Text style={styles.subtitle}>Team Member: Sally</Text>
       <Text style={styles.bodytext}>Phone Number: (123) 468-6584</Text>
       <Text style={styles.subtitle2}>Permissions:</Text>
       <Text style={styles.bodytext}>Daily Check Ins</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
-      <Separator/>
       <Separator/>
       <Text style={styles.subtitle}>Team Member: Bob (Sponsor)</Text>
       <Text style={styles.bodytext}>Phone Number: (123) 364-6565</Text>
@@ -93,7 +143,7 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
-      <Button style={styles.button} title="Add More" onPress={onPress2}></Button>
+      <Button style={styles.button} title="Add/Remove" onPress={onPress2}></Button>
     </View>
   );
 }
@@ -103,12 +153,11 @@ export function ProfileManageDenylist(){
     alert ('Change Denylist Entry')
   }
   function onPress2(){
-    alert ('Add Denylist Entry')
+    alert ('Add or Remove Denylist Entries')
   }
 
   return(
     <View style={styles.container}>
-      <Separator/>
       <Text style={styles.title}>Manage Denylist Entries</Text>
       <Separator></Separator>
       <Text style={styles.subtitle}>Phone Number</Text>
@@ -125,7 +174,7 @@ export function ProfileManageDenylist(){
       <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
-      <Button style={styles.button} title="Add More" onPress={onPress2}></Button>
+      <Button style={styles.button} title="Add/Remove" onPress={onPress2}></Button>
     </View>
   )
 }
@@ -157,15 +206,18 @@ export function ProfileCurrentStatus(){
   );
   return(
     <View style={styles.container}>
-      <Separator></Separator>
       <Text style={styles.title}>Current Status</Text>
       <Separator></Separator>
-      <Accordion title={<Text style={styles.subtitle}>Current Location</Text>} style={styles.paper}>
-          <Image style={styles.image} source={{uri: PlaceholderMap}}/>
-        </Accordion>
-        <Accordion title={<Text style={styles.subtitle}>Current Health Metrics</Text>} style={styles.paper}>
-          <HealthMetricsTable/>
-        </Accordion>
+      <Text style={styles.subtitle}>Current Location:</Text>
+      <Image style={styles.image} source={{uri: PlaceholderMap}}/>
+      <Separator></Separator>
+      <Text style={styles.subtitle}>Current Health Metrics:</Text>
+      <HealthMetricsTable/>
+      <Separator></Separator>
+      <Text style={styles.subtitle}>Current Status Level:</Text>
+      <Image style={styles.titleImage} source={P4}/>
+      <Text style={styles.bodytext}>You're a Firecracker!</Text>
+      <Separator></Separator>
     </View>
   )
 }
@@ -177,6 +229,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%'
   },
+  titleImage: {
+    height: 200,
+    width: 200,
+  },
+  smallSeparator: {
+    marginVertical: 8,
+    height: 1,
+    width: '100%',
+  },
   image: {
     height: 150,
     width: 200,
@@ -186,34 +247,34 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   subtitle: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: 'bold',
     marginVertical: 5
   },
   subtitle2:{
-    fontSize: 10,
+    fontSize: 14,
     fontWeight: 'bold',
     marginVertical: 2.5
   },
   bodytext:{
-    fontSize: 10
+    fontSize: 14
   },
   button: {
     marginVertical: 30,
     marginHorizontal: 15,
     color: 'blue',
     width: 'fit-content',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   button2: {
     marginVertical: 5,
     marginHorizontal: 15,
-    color: 'blue'
+    color: 'blue',
   },
   separator: {
-    marginVertical: 20,
+    marginVertical: 10,
     height: 1,
-    width: '80%',
+    width: '100%',
   },
   modal: {
     elevation: 2,
@@ -228,5 +289,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     elevation: 3,
     padding: 5,
+    width: "100%"
   }
 });
