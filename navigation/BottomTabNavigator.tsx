@@ -10,7 +10,9 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CheckInScreen from '../screens/CheckInScreen';
 import { BottomTabParamList, TabHomeParamList, TabThreeParamList, TabTwoParamList } from '../types';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
-import { boldFontFamily, defaultFontFamily } from '../components/Themed';
+import { boldFontFamily, defaultFontFamily, View } from '../components/Themed';
+import { FontAwesome } from '@expo/vector-icons'; 
+import { Text } from '../components/Themed';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -84,13 +86,14 @@ function CheckInNavigator() {
 
 const ProfileStack = createStackNavigator<TabThreeParamList>();
 
+
 function ProfileNavigator() {
   return (
     <ProfileStack.Navigator>
       <ProfileStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
+        options={{ headerTitle: 'Profile', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </ProfileStack.Navigator>
   );
