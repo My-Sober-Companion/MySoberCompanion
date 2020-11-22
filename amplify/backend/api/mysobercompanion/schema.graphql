@@ -1,5 +1,5 @@
 type Checkin @model {
-  userid: ID!
+  id: ID!
+  time: String!
   location: String!
-  checkinTime: String!
 }

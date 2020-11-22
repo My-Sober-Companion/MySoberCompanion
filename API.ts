@@ -4,21 +4,19 @@
 
 export type CreateCheckinInput = {
   id?: string | null,
-  userid: string,
+  time: string,
   location: string,
-  checkinTime: string,
 };
 
 export type ModelCheckinConditionInput = {
-  userid?: ModelIDInput | null,
+  time?: ModelStringInput | null,
   location?: ModelStringInput | null,
-  checkinTime?: ModelStringInput | null,
   and?: Array< ModelCheckinConditionInput | null > | null,
   or?: Array< ModelCheckinConditionInput | null > | null,
   not?: ModelCheckinConditionInput | null,
 };
 
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -58,7 +56,26 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelStringInput = {
+export type UpdateCheckinInput = {
+  id: string,
+  time?: string | null,
+  location?: string | null,
+};
+
+export type DeleteCheckinInput = {
+  id?: string | null,
+};
+
+export type ModelCheckinFilterInput = {
+  id?: ModelIDInput | null,
+  time?: ModelStringInput | null,
+  location?: ModelStringInput | null,
+  and?: Array< ModelCheckinFilterInput | null > | null,
+  or?: Array< ModelCheckinFilterInput | null > | null,
+  not?: ModelCheckinFilterInput | null,
+};
+
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -74,25 +91,6 @@ export type ModelStringInput = {
   size?: ModelSizeInput | null,
 };
 
-export type UpdateCheckinInput = {
-  userid?: string | null,
-  location?: string | null,
-  checkinTime?: string | null,
-};
-
-export type DeleteCheckinInput = {
-  id?: string | null,
-};
-
-export type ModelCheckinFilterInput = {
-  userid?: ModelIDInput | null,
-  location?: ModelStringInput | null,
-  checkinTime?: ModelStringInput | null,
-  and?: Array< ModelCheckinFilterInput | null > | null,
-  or?: Array< ModelCheckinFilterInput | null > | null,
-  not?: ModelCheckinFilterInput | null,
-};
-
 export type CreateCheckinMutationVariables = {
   input: CreateCheckinInput,
   condition?: ModelCheckinConditionInput | null,
@@ -102,9 +100,8 @@ export type CreateCheckinMutation = {
   createCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -119,9 +116,8 @@ export type UpdateCheckinMutation = {
   updateCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -136,9 +132,8 @@ export type DeleteCheckinMutation = {
   deleteCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -152,9 +147,8 @@ export type GetCheckinQuery = {
   getCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -172,9 +166,8 @@ export type ListCheckinsQuery = {
     items:  Array< {
       __typename: "Checkin",
       id: string,
-      userid: string,
+      time: string,
       location: string,
-      checkinTime: string,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -186,9 +179,8 @@ export type OnCreateCheckinSubscription = {
   onCreateCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -198,9 +190,8 @@ export type OnUpdateCheckinSubscription = {
   onUpdateCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -210,9 +201,8 @@ export type OnDeleteCheckinSubscription = {
   onDeleteCheckin:  {
     __typename: "Checkin",
     id: string,
-    userid: string,
+    time: string,
     location: string,
-    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,

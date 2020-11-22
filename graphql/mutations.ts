@@ -9,9 +9,8 @@ export const createCheckin = /* GraphQL */ `
   ) {
     createCheckin(input: $input, condition: $condition) {
       id
-      userid
+      time
       location
-      checkinTime
       createdAt
       updatedAt
     }
@@ -24,9 +23,8 @@ export const updateCheckin = /* GraphQL */ `
   ) {
     updateCheckin(input: $input, condition: $condition) {
       id
-      userid
+      time
       location
-      checkinTime
       createdAt
       updatedAt
     }
@@ -39,9 +37,8 @@ export const deleteCheckin = /* GraphQL */ `
   ) {
     deleteCheckin(input: $input, condition: $condition) {
       id
-      userid
+      time
       location
-      checkinTime
       createdAt
       updatedAt
     }

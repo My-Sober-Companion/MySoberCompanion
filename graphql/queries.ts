@@ -6,9 +6,8 @@ export const getCheckin = /* GraphQL */ `
   query GetCheckin($id: ID!) {
     getCheckin(id: $id) {
       id
-      userid
+      time
       location
-      checkinTime
       createdAt
       updatedAt
     }
@@ -23,9 +22,8 @@ export const listCheckins = /* GraphQL */ `
     listCheckins(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userid
+        time
         location
-        checkinTime
         createdAt
         updatedAt
       }
