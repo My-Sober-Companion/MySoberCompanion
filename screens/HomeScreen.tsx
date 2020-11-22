@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet } from 'react-native';
+import { Image, ScrollView, StyleSheet, Linking } from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
 import Placeholder from '../assets/images/gray.jpg';
 import P1 from '../assets/images/phoenix/1.png';
@@ -7,6 +7,7 @@ import P2 from '../assets/images/phoenix/2.png';
 import P3 from '../assets/images/phoenix/3.png';
 import P4 from '../assets/images/phoenix/4.png';
 import P5 from '../assets/images/phoenix/5.png';
+import P6 from '../assets/images/logo.png';
 import { Button, Text, View } from '../components/Themed';
 
 const Separator = () => (
@@ -51,6 +52,12 @@ const badges: Badge[] = [
     requirement: 'Daily Check In',
     date: '',
   },
+  {
+    name: 'Phoenix',
+    picture: P6,
+    requirement: 'Weekly Check In',
+    date: '',
+  },
 ];
 
 export default function HomeScreen() {
@@ -62,12 +69,17 @@ export default function HomeScreen() {
     <ScrollView>
       <View style={styles.container}>
         <Separator/>
-        <Button title="Send Emergency Help" color="#E52929" onPress={onPress} shadow/>
+        <Button title="Send Emergency Help" color="#E52929" onPress={onPress}/>
         <View style={styles.smallSeparator}/>
-        <Text style={styles.support}>Call For Support</Text>
-        <Separator/>
-        <Image style={styles.titleImage} source={P4}/>
+        <Text style={styles.support}
+              onPress={() => Linking.openURL('https://www.samhsa.gov/find-help/national-helpline')}>
+          Call For Support
+        </Text>
         <Separator />
+        <Image style={styles.titleImage} source={P4}/>
+        <View style={styles.smallSeparator}/>
+        <Text style={styles.checkins}>You're a Firecracker!</Text>
+        <View style={styles.smallSeparator}/>
         <ProgressBar progress={0.7} width={300} height={10}/>
         <Separator />
         <Text style={styles.circle}>25</Text>
