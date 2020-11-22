@@ -30,7 +30,7 @@ export default function PreviousCheckIns() {
       <Text style={styles.title}>Previous Check Ins</Text>
       {
       checkins.map((checkin, index) => (
-          <Accordion title={<Text style={styles.bodyText}>{checkin.createdAt}</Text>}>
+          <Accordion title={<Text style={styles.bodyText}>{checkin.createdAt}</Text>} style={styles.paper}>
             <View key={checkin.id ? checkin.id : index} style={styles.checkin}>
               <Text style={styles.checkinName}>Time: {checkin.createdAt}, Place: {checkin.location}</Text>
             </View>
@@ -80,4 +80,13 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  paper: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    padding: 5,
+  }
 });

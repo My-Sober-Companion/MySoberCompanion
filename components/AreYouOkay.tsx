@@ -5,9 +5,9 @@ import { Text, View } from '../components/Themed';
 
 export default function AreYouOkay() {
   return (
-    <View style={{width:'70%'}}>
+    <View style={{width:'70%', backgroundColor: 'unset'}}>
         <Text style={styles.title}>Are you okay?</Text>
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: 'unset'}]}>
             <View style={styles.buttons}>
               <Button
                 title="Yes"
@@ -35,13 +35,13 @@ const MessageInputMultiline = () => {
   return (
     <View  style={{
         marginTop: 10,
-        borderBottomColor: '#000000',
-        borderWidth: 1,
+        backgroundColor: '#F5F7FF',
       }}>
       <TextInput
         multiline
         numberOfLines={4}
         onChangeText={text => onChangeText(text)}
+        style={{padding: 5}}
         value={value}
       />
     </View>

@@ -1,32 +1,32 @@
 import * as React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleProp, StyleSheet, ViewStyle} from 'react-native';
+import { View } from 'react-native-animatable';
 import { List } from 'react-native-paper';
 
 export interface AccordionProps {
-    children: JSX.Element;
-    title: React.ReactNode;
-  }
-const Accordion: React.FC<AccordionProps> = ({children, title}) => {
-//   const [expanded, setExpanded] = React.useState(true);
+  children: JSX.Element;
+  title: React.ReactNode;
+  style?: StyleProp<ViewStyle>;
+}
 
-//   const handlePress = () => setExpanded(!expanded);
-
+const Accordion: React.FC<AccordionProps> = ({children, title, style}) => {
   return (
-    <List.Section>
-      <List.Accordion title={title} titleStyle={styles.title}>
-        {children}
-      </List.Accordion>
-    </List.Section>
+    <View style={[style, {marginVertical: 10}]}>
+      <List.Section>
+        <List.Accordion title={title} titleStyle={styles.title}>
+            {children}
+        </List.Accordion>
+      </List.Section>
+    </View>
   );
 };
 
 export default Accordion;
 
 const styles = StyleSheet.create({
-    title: {
-      fontSize: 20,
-      fontWeight: 'bold',
-       marginVertical: 8,
-    },
-  });
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+});
   

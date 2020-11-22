@@ -10,19 +10,28 @@ import PlaceholderMap from '../assets/images/map.png'
 import Accordion from '../components/Accordion';
 import { Text, View } from '../components/Themed';
 
+const Paper: React.FC<{children: JSX.Element}> = ({ children }) => {
+  return (
+    <View style={styles.paper}>
+      {children}
+    </View>
+  );
+}
+
 export default function CheckInScreen() {
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <Text style={styles.heading}>Upcoming Check In - 12:00AM</Text>
+      <View style={[styles.container]}>
+        <Text style={styles.heading}>Check In - 3:00 PM</Text>
+        <Text>Complete within 11 min 39 sec</Text>
         <AreYouOkay />
-        <Accordion title={<Text style={styles.bodyText}>Current Location</Text>}>
+        <Accordion title={<Text style={styles.bodyText}>Current Location</Text>} style={styles.paper}>
           <Image style={styles.mapImage} source={{uri: PlaceholderMap}}/>
         </Accordion>
-        <Accordion title={<Text style={styles.bodyText}>Current Health Metrics</Text>}>
+        <Accordion title={<Text style={styles.bodyText}>Current Health Metrics</Text>} style={styles.paper}>
           <HealthMetrics />
         </Accordion>
-          <CheckInSection />
+        <CheckInSection />
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <Text style={styles.bodyText}>Next Check In at 07:00AM</Text>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
@@ -40,7 +49,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
-     marginVertical: 8,
+    marginVertical: 8,
   },
   title: {
     fontSize: 18,
@@ -50,7 +59,6 @@ const styles = StyleSheet.create({
   bodyText: {
     fontWeight: 'normal',
     fontSize: 18,
-     marginVertical: 8,
   },
   textbox: {
     width:'100%',
@@ -69,4 +77,13 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  paper: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    padding: 5,
+  }
 });

@@ -52,7 +52,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    width: '70%'
+    width: '70%',
+    backgroundColor: 'unset'
   },
   title: {
     fontSize: 20,
