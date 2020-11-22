@@ -16,9 +16,9 @@ export default function CountdownTimer() {
                 until={10 * 60 + 30}
                 size={13}
                 digitStyle={{backgroundColor: '#FFF', borderWidth: 0, borderColor: '#FFF'}}
-                digitTxtStyle={{color: '#2958E5', fontWeight: 'normal'}}
+                digitTxtStyle={{color: '#000000', fontWeight: 'normal'}}
                 // timeLabelStyle={{color: 'red', fontWeight: 'normal'}}
-                separatorStyle={{color: '#2958E5'}}
+                separatorStyle={{color: '#000000'}}
                 timeToShow={['M', 'S']}
                 timeLabels={{m: null, s: null}}
                 showSeparator

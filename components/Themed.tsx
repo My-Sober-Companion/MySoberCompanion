@@ -6,7 +6,7 @@ import useColorScheme from '../hooks/useColorScheme';
 export const defaultFontFamily = 'Montserrat_400Regular';
 export const boldFontFamily = 'Montserrat_700Bold';
 
-export const defaultLight = '#2958E5';
+export const defaultLight = '#000000';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
