@@ -30,7 +30,7 @@ const HealthMetricsTable = () => (
 export default function HealthMetrics() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Current Health Metrics:</Text>
+      {/* <Text style={styles.title}>Current Health Metrics:</Text> */}
       <HealthMetricsTable/>
 
     </View>

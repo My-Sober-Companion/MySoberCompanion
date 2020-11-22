@@ -1,5 +1,6 @@
 import React, { useEffect, useState }  from 'react';
 import { StyleSheet, Button, Alert, TextInput } from 'react-native';
+import Accordion from '../components/Accordion';
 
 import { Text, View } from '../components/Themed';
 import { API, graphqlOperation } from 'aws-amplify'
@@ -29,9 +30,11 @@ export default function PreviousCheckIns() {
       <Text style={styles.title}>Previous Check Ins</Text>
       {
       checkins.map((checkin, index) => (
-          <View key={checkin.id ? checkin.id : index} style={styles.checkin}>
-            <Text style={styles.checkinName}>Time: {checkin.createdAt}, Place: {checkin.location}</Text>
-          </View>
+          <Accordion title={<Text style={styles.bodyText}>{checkin.createdAt}</Text>}>
+            <View key={checkin.id ? checkin.id : index} style={styles.checkin}>
+              <Text style={styles.checkinName}>Time: {checkin.createdAt}, Place: {checkin.location}</Text>
+            </View>
+          </Accordion>
         ))
       }
 
@@ -46,8 +49,13 @@ const styles = StyleSheet.create({
     width: '70%'
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
+     marginVertical: 8,
+  },
+  bodyText: {
+    fontSize: 18,
+    fontWeight: 'normal',
      marginVertical: 8,
   },
   checkinName:{
