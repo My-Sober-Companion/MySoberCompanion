@@ -25,25 +25,25 @@ const badges: Badge[] = [
     name: 'Egg',
     picture: P1,
     requirement: 'Hourly Check In',
-    date: '12/12/2020',
+    date: '10/02/2020',
   },
   {
-    name: 'Hatcling',
+    name: 'Hatchling',
     picture: P2,
     requirement: '3 Hour Check In',
-    date: '12/14/2020',
+    date: '10/08/2020',
   },
   {
     name: 'Fledgling',
     picture: P3,
     requirement: '6 Hour Check In',
-    date: '',
+    date: '10/29/2020',
   },
   {
     name: 'Firecracker',
     picture: P4,
     requirement: '12 Hour Check In',
-    date: '',
+    date: '11/20/2020',
   },
   {
     name: 'Firebird',
@@ -55,7 +55,7 @@ const badges: Badge[] = [
 
 export default function HomeScreen() {
   function onPress() {
-    alert('hello');
+    alert('Calling Emergency Services');
   }
 
   return (
@@ -63,15 +63,15 @@ export default function HomeScreen() {
       <View style={styles.container}>
         <Separator/>
         <Button title="Send Emergency Help" color="#E52929" onPress={onPress} shadow/>
-        <Separator/>
+        <View style={styles.smallSeparator}/>
         <Text style={styles.support}>Call For Support</Text>
         <Separator/>
-        <Image style={styles.image} source={{uri: Placeholder}}/>
+        <Image style={styles.titleImage} source={P4}/>
         <Separator />
         <ProgressBar progress={0.7} width={300} height={10}/>
         <Separator />
         <Text style={styles.circle}>25</Text>
-        <Separator />
+        <View style={styles.smallSeparator}/>
         <Text style={styles.checkins}>Check ins remaining until next badge!</Text>
         <View style={styles.flexList}>
           {badges.map(badge =>
@@ -102,6 +102,10 @@ const styles = StyleSheet.create({
     height: 200,
     width: 150,
   },
+  titleImage: {
+    height: 200,
+    width: 200,
+  },
   support: {
     textDecorationLine: 'underline',
     color: 'black',
@@ -113,6 +117,11 @@ const styles = StyleSheet.create({
   },
   separator: {
     marginVertical: 15,
+    height: 1,
+    width: '80%',
+  },
+  smallSeparator: {
+    marginVertical: 8,
     height: 1,
     width: '80%',
   },
