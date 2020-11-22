@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Button, Alert, TextInput, Image, ScrollView } from 'react-native';
+import CountDown from 'react-native-countdown-component';
 
 import AreYouOkay from '../components/AreYouOkay';
 import CurrentLocation from '../components/CurrentLocation';
@@ -8,6 +9,7 @@ import CheckInSection from '../components/CheckInSection';
 import PreviousCheckIns from '../components/PreviousCheckIns';
 import PlaceholderMap from '../assets/images/map.png'
 import Accordion from '../components/Accordion';
+import CountdownTimer from '../components/CountdownTimer';
 import { Text, View } from '../components/Themed';
 
 const Paper: React.FC<{children: JSX.Element}> = ({ children }) => {
@@ -23,7 +25,7 @@ export default function CheckInScreen() {
     <ScrollView>
       <View style={[styles.container]}>
         <Text style={styles.heading}>Check In - 3:00 PM</Text>
-        <Text>Complete within 11 min 39 sec</Text>
+        <CountdownTimer />
         <AreYouOkay />
         <Accordion title={<Text style={styles.bodyText}>Current Location</Text>} style={styles.paper}>
           <Image style={styles.mapImage} source={{uri: PlaceholderMap}}/>

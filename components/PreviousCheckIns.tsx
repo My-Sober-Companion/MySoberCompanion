@@ -1,11 +1,13 @@
 import React, { useEffect, useState }  from 'react';
 import { StyleSheet, Button, Alert, TextInput, Image } from 'react-native';
 import Accordion from '../components/Accordion';
-import PlaceholderMap from '../assets/images/map.png'
+import { format, parseJSON } from 'date-fns'
 import { Text, View } from '../components/Themed';
-import { API, graphqlOperation } from 'aws-amplify'
+import { API, autoShowTooltip, graphqlOperation } from 'aws-amplify'
 import { createCheckin } from '../graphql/mutations'
 import { listCheckins } from '../graphql/queries'
+import PlaceholderMap from '../assets/images/map.png'
+import HealthMetrics from '../components/HealthMetrics';
 
 const initialState = { time: '', location: '' }
 
@@ -23,24 +25,17 @@ export default function PreviousCheckIns() {
       setCheckins(checkins)
     } catch (err) { console.log('error fetching checkins') }
   }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Previous Check Ins</Text>
       {
-      checkins.sort((a,b) => {
-        return new Date(a.createdAt).getTime() - 
-        new Date(b.createdAt).getTime()
-      }).reverse().map((checkin, index) => (
-          <Accordion title={<Text style={styles.bodyText}>{new Intl.DateTimeFormat("en-US", {
-          month: "numeric",
-          day: "2-digit",
-          year: "numeric",
-          hour: 'numeric', minute: 'numeric', second: 'numeric'
-        }).format(new Date(checkin.createdAt))}</Text>} style={styles.paper}>
+      checkins.map((checkin, index) => (
+          <Accordion title={<Text style={styles.bodyText}>{format(parseJSON(checkin.createdAt), 'M/d/yy p')}</Text>} style={styles.paper}>
             <View key={checkin.id ? checkin.id : index} style={styles.checkin}>
-              <Image style={styles.image} source={{uri: PlaceholderMap}}/>            
-              <Text style={styles.checkinLocation}>Location: {checkin.location}</Text>
+              <Text style={styles.checkinName}>Checked in with all teammates</Text>
+              <Image style={styles.mapImage} source={{uri: PlaceholderMap}}/>
+              <Text style={styles.checkinName}>Health Metrics Logged:</Text>
+              <HealthMetrics />
             </View>
           </Accordion>
         ))
@@ -49,12 +44,12 @@ export default function PreviousCheckIns() {
     </View>
   );
 }
-
+// 2020-11-22T03:31:56.236Z
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    width: '70%'
+    width: '100%'
   },
   title: {
     fontSize: 18,
@@ -70,12 +65,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     textAlign: 'center',
+    margin: 'auto',
   },
   checkin:{
   },
   singleCheckIn:{
     flexDirection: 'row',
     textAlign: 'center',
+  },
+  mapImage: {
+    height: 150,
+    width: 200,
+    margin: 'auto',
   },
   textbox: {
     width:'100%',
