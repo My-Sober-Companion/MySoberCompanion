@@ -81,10 +81,11 @@ export default function HomeScreen() {
         <Text style={styles.checkins}>You're a Firecracker!</Text>
         <View style={styles.smallSeparator}/>
         <ProgressBar progress={0.7} width={300} height={10}/>
-        <Separator />
-        <Text style={styles.circle}>25</Text>
-        <View style={styles.smallSeparator}/>
-        <Text style={styles.checkins}>Check ins remaining until next badge!</Text>
+        <View style={styles.badgeProgressContainer}>
+          <Text style={styles.circle}>25</Text>
+          <View style={styles.progressSeparator}/>
+          <Text style={styles.checkins}>Check ins remaining until next badge!</Text>
+        </View>
         <View style={styles.flexList}>
           {badges.map(badge =>
             <View style={styles.badgeContainer} key={badge.name}>
@@ -105,6 +106,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     height: '100%'
+  },
+  badgeProgressContainer: {
+    flexDirection:'row',
+    flex: 1,
+    alignItems: 'center',
+    padding: 30,
   },
   badgeContainer: {
     width: '50%',
@@ -136,6 +143,11 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     height: 1,
     width: '80%',
+  },
+  progressSeparator: {
+    marginVertical: 8,
+    height: 1,
+    width: '10%',
   },
   progress: {
     width: 300,
