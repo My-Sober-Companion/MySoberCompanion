@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Text as DefaultText, View as DefaultView } from 'react-native';
-
+import { Button as DefaultButton, ButtonProps as DefaultButtonProps, StyleProp, Text as DefaultText, View as DefaultView, ViewStyle } from 'react-native';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
+
+export const defaultFontFamily = 'Montserrat_400Regular';
+export const boldFontFamily = 'Montserrat_700Bold';
+
+export const defaultLight = '#000000';
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -21,16 +25,17 @@ export function useThemeColor(
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
+  fontFamily?: string;
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
 export function Text(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
+  const { style, lightColor = defaultLight, darkColor, fontFamily = defaultFontFamily, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;
 }
 
 export function View(props: ViewProps) {
@@ -38,4 +43,17 @@ export function View(props: ViewProps) {
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
   return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+}
+
+export type ExtendedButtonProps = DefaultButtonProps & {
+  style?: StyleProp<ViewStyle>;
+  shadow?: boolean;
+}
+export function Button(props: ExtendedButtonProps) {
+  const { style, shadow = true, ...otherProps } = props;
+  const shadowStyle: StyleProp<ViewStyle> = { shadowColor: 'black', shadowOffset: { height: 4, width: 2 }, shadowOpacity: 0.2, shadowRadius: 5};
+  const derivedStyles = shadow ? [style, shadowStyle] : style;
+  return <View style={derivedStyles}>
+    <DefaultButton {...otherProps}/>
+  </View>;
 }

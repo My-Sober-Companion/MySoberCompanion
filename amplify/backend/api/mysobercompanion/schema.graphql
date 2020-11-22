@@ -1,0 +1,5 @@
+type Checkin @model {
+  id: ID!
+  time: String!
+  location: String!
+}

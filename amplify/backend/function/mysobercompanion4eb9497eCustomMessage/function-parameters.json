@@ -1,0 +1,25 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "mysobercompanion4eb9497e",
+  "functionName": "mysobercompanion4eb9497eCustomMessage",
+  "resourceName": "mysobercompanion4eb9497eCustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
+  "triggerDir": "C:\\Users\\Sean.Blonien\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "roleName": "mysobercompanion4eb9497eCustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "/",
+  "EMAILSUBJECT": "Confirm Your Account",
+  "EMAILMESSAGE": "Please confirm your account at the link below.",
+  "RESOURCENAME": "resourceName",
+  "enableCors": false
+}

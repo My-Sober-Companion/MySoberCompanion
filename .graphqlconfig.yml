@@ -1,0 +1,16 @@
+projects:
+  mysobercompanion:
+    schemaPath: amplify/backend/api/mysobercompanion/build/schema.graphql
+    includes:
+      - graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: API.ts
+        docsFilePath: graphql
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3
