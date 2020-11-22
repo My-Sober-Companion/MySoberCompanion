@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Button, Image, ScrollView, StyleSheet } from 'react-native';
+import { Image, ScrollView, StyleSheet } from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
 import Placeholder from '../assets/images/gray.jpg';
-import { Text, View } from '../components/Themed';
 import P1 from '../assets/images/phoenix/1.png';
 import P2 from '../assets/images/phoenix/2.png';
 import P3 from '../assets/images/phoenix/3.png';
 import P4 from '../assets/images/phoenix/4.png';
 import P5 from '../assets/images/phoenix/5.png';
+import { Button, Text, View } from '../components/Themed';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -37,7 +37,7 @@ const badges: Badge[] = [
     name: 'Fledgling',
     picture: P3,
     requirement: '3 Hour Check In',
-    date: '12/14/2020',
+    date: '',
   },
   {
     name: 'Firecracker',
@@ -62,7 +62,7 @@ export default function HomeScreen() {
     <ScrollView>
       <View style={styles.container}>
         <Separator/>
-        <Button title="Send Emergency Help" color="#E52929" onPress={onPress} />
+        <Button title="Send Emergency Help" color="#E52929" onPress={onPress} shadow/>
         <Separator/>
         <Text style={styles.support}>Call For Support</Text>
         <Separator/>
@@ -75,11 +75,11 @@ export default function HomeScreen() {
         <Text style={styles.checkins}>Check ins remaining until next badge!</Text>
         <View style={styles.flexList}>
           {badges.map(badge =>
-            <View style={styles.badgeContainer}>
+            <View style={styles.badgeContainer} key={badge.name}>
               <Image style={styles.badge} source={{uri: badge.picture}}/>
-              <Text style={styles.bold}>{badge.name}</Text>
-              <Text>{badge.requirement}</Text>
-              <Text style={styles.bold}>{badge.date}</Text>
+              <Text style={styles.mediumBold}>{badge.name}</Text>
+              <Text style={styles.medium}>{badge.requirement}</Text>
+              <Text style={styles.mediumBold}>{badge.date}</Text>
             </View>
           )}
         </View>
@@ -125,16 +125,17 @@ const styles = StyleSheet.create({
      textAlign: 'center'
   },
   badge: {
-    flex: 2,
-    borderRadius: 50,
-    height: 50,
-    width: 50,
+    height: 70,
+    width: 70,
     marginVertical: 5,
-    alignItems: 'center',
-    position: 'relative'
+    alignItems: 'center'
   },
-  bold: {
-    fontWeight: 'bold'
+  mediumBold: {
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  medium: {
+    fontSize: 16
   },
   circle: {
     borderRadius: 50,

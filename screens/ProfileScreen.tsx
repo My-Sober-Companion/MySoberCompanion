@@ -1,9 +1,6 @@
 import * as React from 'react';
-//import { StyleSheet } from 'react-native';
-import {StyleSheet, Image } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import {Button, Text, View } from '../components/Themed';
+import { StyleSheet } from 'react-native';
+import { Button, Text, View } from '../components/Themed';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -28,16 +25,14 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Separator></Separator>
+      <Separator/>
       <Text style={styles.title}>Manage Profile Details</Text>
-      <Separator></Separator>
+      <Separator/>
       <Button style={styles.button} title="Login and Security" onPress={onPress}></Button>
       <Button style={styles.button} title="Manage Team" onPress={onPress2}></Button>
       <Button style={styles.button} title="Manage Denylist" onPress={onPress3}></Button>
       <Button style={styles.button} title="Current Status" onPress={onPress4}></Button>
-      <Separator></Separator>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/ProfileScreen.tsx" />
+      <Separator/>
     </View>
   );
 }
@@ -48,9 +43,9 @@ export function ProfileManageTeam(){
   }
   return (
     <View style={styles.container}>
-      <Separator></Separator>
+      <Separator/>
       <Text style={styles.title}>Manage Team Members</Text>
-      <Separator></Separator>
+      <Separator/>
       <Text style={styles.subtitle}>Team Member: Mom</Text>
       <Text style={styles.bodytext}>Phone Number: (123) 364-9372</Text>
       <Text style={styles.subtitle2}>Permissions:</Text>
@@ -58,7 +53,7 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Daily Check Ins</Text>
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}></Button>
-      <Separator></Separator>
+      <Separator/>
     </View>
   );
 }
