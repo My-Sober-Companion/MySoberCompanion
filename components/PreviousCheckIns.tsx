@@ -1,6 +1,5 @@
 import React, { useEffect, useState }  from 'react';
 import { StyleSheet, Button, Alert, TextInput } from 'react-native';
-
 import { Text, View } from '../components/Themed';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createCheckin } from '../graphql/mutations'
