@@ -50,7 +50,7 @@ export type ExtendedButtonProps = DefaultButtonProps & {
   shadow?: boolean;
 }
 export function Button(props: ExtendedButtonProps) {
-  const { style, shadow, ...otherProps } = props;
+  const { style, shadow = true, ...otherProps } = props;
   const shadowStyle: StyleProp<ViewStyle> = { shadowColor: 'black', shadowOffset: { height: 4, width: 2 }, shadowOpacity: 0.2, shadowRadius: 5};
   const derivedStyles = shadow ? [style, shadowStyle] : style;
   return <View style={derivedStyles}>
