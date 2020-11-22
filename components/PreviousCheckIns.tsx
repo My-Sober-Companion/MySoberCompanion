@@ -67,7 +67,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 'auto',
   },
-  checkin:{
+  checkinName:{
+    marginHorizontal: 'auto',
+    marginVertical: 10,
   },
   singleCheckIn:{
     flexDirection: 'row',
@@ -76,7 +78,8 @@ const styles = StyleSheet.create({
   mapImage: {
     height: 150,
     width: 200,
-    margin: 'auto',
+    marginHorizontal: 'auto',
+    marginVertical: 10,
   },
   textbox: {
     width:'100%',
