@@ -22,7 +22,7 @@ export default function CheckInSection() {
   async function fetchCheckins() {
     try {
       const checkinData = await API.graphql(graphqlOperation(listCheckins))
-      const checkin = checkinData.data.listCheckins.items
+      const checkins = checkinData.data.listCheckins.items
       setCheckins(checkins)
     } catch (err) { console.log('error fetching checkins') }
   }
