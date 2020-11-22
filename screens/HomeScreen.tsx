@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Image, ScrollView, StyleSheet, Linking } from 'react-native';
+import { Image, Linking, ScrollView, StyleSheet } from 'react-native';
 import ProgressBar from 'react-native-progress/Bar';
-import Placeholder from '../assets/images/gray.jpg';
+import P6 from '../assets/images/logo.png';
 import P1 from '../assets/images/phoenix/1.png';
 import P2 from '../assets/images/phoenix/2.png';
 import P3 from '../assets/images/phoenix/3.png';
 import P4 from '../assets/images/phoenix/4.png';
 import P5 from '../assets/images/phoenix/5.png';
-import P6 from '../assets/images/logo.png';
 import { Button, Text, View } from '../components/Themed';
 
 const Separator = () => (

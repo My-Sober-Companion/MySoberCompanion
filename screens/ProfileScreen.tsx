@@ -72,25 +72,25 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.fullWidth}>
         <View style={styles.container}>
           {isManageTeamOpen &&
-            <Modal animationType="slide" style={styles.modal} transparent>
+            <View style={styles.modal}>
               <Button style={styles.button} title="X" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)} />
               <ProfileManageTeam />
-            </Modal>
+            </View>
           }
           {isManageDenyOpen &&
-            <Modal animationType="slide" style={styles.modal} transparent>
+            <View style={styles.modal}>
               <Button style={styles.button} title="X" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)} />
-            <ProfileManageDenylist />
-            </Modal>
+              <ProfileManageDenylist />
+            </View>
           }
           {isCurrentStatusOpen &&
-          <Modal animationType="slide" style={styles.modal} transparent>
-          <Button style={styles.button} title="X" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)} />
-          <ProfileCurrentStatus />
-          </Modal>
+            <View style={styles.modal}>
+            <Button style={styles.button} title="X" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)} />
+            <ProfileCurrentStatus />
+          </View>
           }
           {!isManageTeamOpen && !isManageDenyOpen && !isCurrentStatusOpen &&
             <View style={styles.container}>
@@ -229,6 +229,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%'
   },
+  fullWidth: {
+    width: '100%'
+  },
   titleImage: {
     height: 200,
     width: 200,
@@ -279,7 +282,8 @@ const styles = StyleSheet.create({
   modal: {
     elevation: 2,
     borderColor: 'transparent',
-    borderWidth: 0
+    borderWidth: 0,
+    width: '100%'
   },
   paper: {
     backgroundColor: 'white',
