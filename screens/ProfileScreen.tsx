@@ -10,6 +10,7 @@ import P3 from '../assets/images/phoenix/3.png';
 import P4 from '../assets/images/phoenix/4.png';
 import P5 from '../assets/images/phoenix/5.png';
 import P6 from '../assets/images/logo.png';
+import Accordion from '../components/Accordion';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -123,25 +124,28 @@ export function ProfileManageTeam(){
     <View style={styles.container}>
       <Text style={styles.title}>Manage Team Members</Text>
       <Separator/>
-      <Text style={styles.subtitle}>Team Member: Mom</Text>
-      <Text style={styles.bodytext}>Phone Number: (123) 364-9372</Text>
-      <Text style={styles.subtitle2}>Permissions:</Text>
-      <Text style={styles.bodytext}>Point of Contact During an Emergency</Text>
-      <Text style={styles.bodytext}>Daily Check Ins</Text>
-      <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Accordion title={<Text style={styles.bodytext}>Team Member: Mom</Text>} style={styles.paper}>
+        <Text style={styles.bodytext}>#: (123) 364-9372</Text>
+        <Text style={styles.subtitle2}>Permissions:</Text>
+        <Text style={styles.bodytext}>Point of Contact During an Emergency</Text>
+        <Text style={styles.bodytext}>Daily Check Ins</Text>
+        <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
+        <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      </Accordion>
       <Separator/>
-      <Text style={styles.subtitle}>Team Member: Sally</Text>
-      <Text style={styles.bodytext}>Phone Number: (123) 468-6584</Text>
-      <Text style={styles.subtitle2}>Permissions:</Text>
-      <Text style={styles.bodytext}>Daily Check Ins</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Accordion title={<Text style={styles.bodytext}>Team Member: Sally</Text>} style={styles.paper}>
+        <Text style={styles.bodytext}>#: (123) 468-6584</Text>
+        <Text style={styles.subtitle2}>Permissions:</Text>
+        <Text style={styles.bodytext}>Daily Check Ins</Text>
+        <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      </Accordion>
       <Separator/>
-      <Text style={styles.subtitle}>Team Member: Bob (Sponsor)</Text>
-      <Text style={styles.bodytext}>Phone Number: (123) 364-6565</Text>
-      <Text style={styles.subtitle2}>Permissions:</Text>
-      <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Accordion title={<Text style={styles.bodytext}>Team Member: Bob (Sponsor)</Text>} style={styles.paper}>
+        <Text style={styles.bodytext}>#: (123) 364-6565</Text>
+        <Text style={styles.subtitle2}>Permissions:</Text>
+        <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
+        <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      </Accordion>      
       <Separator/>
       <Button style={styles.button} title="Add/Remove" onPress={onPress2}></Button>
     </View>
@@ -160,19 +164,23 @@ export function ProfileManageDenylist(){
     <View style={styles.container}>
       <Text style={styles.title}>Manage Denylist Entries</Text>
       <Separator></Separator>
-      <Text style={styles.subtitle}>Phone Number</Text>
-      <Text style={styles.bodytext}>#: (456) 467-4656</Text>
-      <Text style={styles.bodytext}>Flag: texts and calls</Text>
-      <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Accordion title={<Text style={styles.bodytext}>Bill's Phone</Text>} style={styles.paper}>
+        <Text style={styles.subtitle}>Phone Number</Text>
+        <Text style={styles.bodytext}>#: (456) 467-4656</Text>
+        <Text style={styles.bodytext}>Flag: texts and calls</Text>
+        <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
+        <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      </Accordion>
       <Separator/>
-      <Text style={styles.subtitle}>Location</Text>
-      <View style={styles.container}>
-        <Image style={styles.image} source={{uri: PlaceholderMap}}/>
-      </View>
-      <Text style={styles.bodytext}>Flag: within 1 mile radius</Text>
-      <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Accordion title={<Text style={styles.bodytext}>Blue Moon Bar</Text>} style={styles.paper}>
+        <Text style={styles.subtitle}>Location</Text>
+        <View style={styles.container}>
+          <Image style={styles.image} source={{uri: PlaceholderMap}}/>
+        </View>
+        <Text style={styles.bodytext}>Flag: within 1 mile radius</Text>
+        <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
+        <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      </Accordion>
       <Separator/>
       <Button style={styles.button} title="Add/Remove" onPress={onPress2}></Button>
     </View>
