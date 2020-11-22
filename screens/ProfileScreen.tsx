@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { Modal, ScrollView, StyleSheet } from 'react-native';
 import { Button, Text, View } from '../components/Themed';
 
 const Separator = () => (
@@ -7,12 +8,9 @@ const Separator = () => (
 );
 
 export default function ProfileScreen() {
+  const [isManageTeamOpen, setIsManageTeamOpen] = useState(false);
   function onPress() {
     alert('alter login credentials or security preferences');
-  }
-  function onPress2() {
-    alert('update teammembers and their access');
-    //point to ProfileManageTeam()
   }
 
   function onPress3() {
@@ -25,14 +23,27 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Separator/>
-      <Text style={styles.title}>Manage Profile Details</Text>
-      <Separator/>
-      <Button style={styles.button} title="Login and Security" onPress={onPress}></Button>
-      <Button style={styles.button} title="Manage Team" onPress={onPress2}></Button>
-      <Button style={styles.button} title="Manage Denylist" onPress={onPress3}></Button>
-      <Button style={styles.button} title="Current Status" onPress={onPress4}></Button>
-      <Separator/>
+      <ScrollView>
+        <View style={styles.container}>
+          {isManageTeamOpen ?
+            <Modal animationType="slide" style={styles.modal} transparent>
+              <Button style={styles.button} title="X" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
+              <ProfileManageTeam/>
+            </Modal>
+            :
+            <View style={styles.container}>
+              <Separator/>
+              <Text style={styles.title}>Manage Profile Details</Text>
+              <Separator/>
+              <Button style={styles.button} title="Login and Security" onPress={onPress}/>
+              <Button style={styles.button} title="Manage Team" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
+              <Button style={styles.button} title="Manage Denylist" onPress={onPress3}/>
+              <Button style={styles.button} title="Current Status" onPress={onPress4}/>
+              <Separator/>
+            </View>
+          }
+        </View>
+      </ScrollView>
     </View>
   );
 }
@@ -52,7 +63,7 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Point of Contact During an Emergency</Text>
       <Text style={styles.bodytext}>Daily Check Ins</Text>
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
-      <Button style={styles.button2} title="Edit" onPress={onPress}></Button>
+      <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
     </View>
   );
@@ -63,6 +74,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    width: '100%'
   },
   title: {
     fontSize: 20,
@@ -84,7 +96,9 @@ const styles = StyleSheet.create({
   button: {
     marginVertical: 30,
     marginHorizontal: 15,
-    color: 'blue'
+    color: 'blue',
+    width: 'fit-content',
+    alignSelf: 'center'
   },
   button2: {
     marginVertical: 5,
@@ -96,4 +110,9 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  modal: {
+    elevation: 2,
+    borderColor: 'none',
+    borderWidth: 0
+  }
 });
