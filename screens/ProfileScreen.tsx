@@ -28,19 +28,26 @@ export default function ProfileScreen() {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.container}>
-          {isManageTeamOpen ?
+          {isManageTeamOpen &&
             <Modal animationType="slide" style={styles.modal} transparent>
-              <Button style={styles.button} title="X" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
-              <ProfileManageTeam/>
+              <Button style={styles.button} title="X" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)} />
+              <ProfileManageTeam />
             </Modal>
-            :
+          }
+          {isManageDenyOpen &&
+            <Modal animationType="slide" style={styles.modal} transparent>
+              <Button style={styles.button} title="X" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)} />
+            <ProfileManageDenylist />
+            </Modal>
+          }
+          {!isManageTeamOpen && !isManageDenyOpen &&
             <View style={styles.container}>
               <Separator/>
               <Text style={styles.title}>Manage Profile Details</Text>
               <Separator/>
               <Button style={styles.button} title="Login and Security" onPress={onPress}/>
               <Button style={styles.button} title="Manage Team" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
-              <Button style={styles.button} title="Manage Denylist" onPress={onPress3}/>
+              <Button style={styles.button} title="Manage Denylist" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)}/>
               <Button style={styles.button} title="Current Status" onPress={onPress4}/>
               <Separator/>
             </View>
