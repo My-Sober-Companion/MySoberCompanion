@@ -74,7 +74,7 @@ function CheckInNavigator() {
       <CheckInStack.Screen
         name="CheckInScreen"
         component={CheckInScreen}
-        options={{ headerTitle: 'Check In Screen Title' }}
+        options={{ headerTitle: 'Check Ins' }}
       />
     </CheckInStack.Navigator>
   );

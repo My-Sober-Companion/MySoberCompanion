@@ -1,5 +1,5 @@
-type Todo @model {
-  id: ID!
-  name: String!
-  description: String
+type Checkin @model {
+  userid: ID!
+  location: String!
+  checkinTime: String!
 }

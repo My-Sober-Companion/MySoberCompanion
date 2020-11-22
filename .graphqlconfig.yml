@@ -1,6 +1,6 @@
 projects:
   mysobercompanion:
-    schemaPath: graphql/schema.json
+    schemaPath: amplify/backend/api/mysobercompanion/build/schema.graphql
     includes:
       - graphql/**/*.ts
     excludes:

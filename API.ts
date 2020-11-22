@@ -2,21 +2,23 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateTodoInput = {
+export type CreateCheckinInput = {
   id?: string | null,
-  name: string,
-  description?: string | null,
+  userid: string,
+  location: string,
+  checkinTime: string,
 };
 
-export type ModelTodoConditionInput = {
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoConditionInput | null > | null,
-  or?: Array< ModelTodoConditionInput | null > | null,
-  not?: ModelTodoConditionInput | null,
+export type ModelCheckinConditionInput = {
+  userid?: ModelIDInput | null,
+  location?: ModelStringInput | null,
+  checkinTime?: ModelStringInput | null,
+  and?: Array< ModelCheckinConditionInput | null > | null,
+  or?: Array< ModelCheckinConditionInput | null > | null,
+  not?: ModelCheckinConditionInput | null,
 };
 
-export type ModelStringInput = {
+export type ModelIDInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -56,26 +58,7 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type UpdateTodoInput = {
-  id: string,
-  name?: string | null,
-  description?: string | null,
-};
-
-export type DeleteTodoInput = {
-  id?: string | null,
-};
-
-export type ModelTodoFilterInput = {
-  id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
-};
-
-export type ModelIDInput = {
+export type ModelStringInput = {
   ne?: string | null,
   eq?: string | null,
   le?: string | null,
@@ -91,83 +74,107 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
-export type CreateTodoMutationVariables = {
-  input: CreateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateCheckinInput = {
+  userid?: string | null,
+  location?: string | null,
+  checkinTime?: string | null,
 };
 
-export type CreateTodoMutation = {
-  createTodo:  {
-    __typename: "Todo",
+export type DeleteCheckinInput = {
+  id?: string | null,
+};
+
+export type ModelCheckinFilterInput = {
+  userid?: ModelIDInput | null,
+  location?: ModelStringInput | null,
+  checkinTime?: ModelStringInput | null,
+  and?: Array< ModelCheckinFilterInput | null > | null,
+  or?: Array< ModelCheckinFilterInput | null > | null,
+  not?: ModelCheckinFilterInput | null,
+};
+
+export type CreateCheckinMutationVariables = {
+  input: CreateCheckinInput,
+  condition?: ModelCheckinConditionInput | null,
+};
+
+export type CreateCheckinMutation = {
+  createCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type UpdateTodoMutationVariables = {
-  input: UpdateTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type UpdateCheckinMutationVariables = {
+  input: UpdateCheckinInput,
+  condition?: ModelCheckinConditionInput | null,
 };
 
-export type UpdateTodoMutation = {
-  updateTodo:  {
-    __typename: "Todo",
+export type UpdateCheckinMutation = {
+  updateCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type DeleteTodoMutationVariables = {
-  input: DeleteTodoInput,
-  condition?: ModelTodoConditionInput | null,
+export type DeleteCheckinMutationVariables = {
+  input: DeleteCheckinInput,
+  condition?: ModelCheckinConditionInput | null,
 };
 
-export type DeleteTodoMutation = {
-  deleteTodo:  {
-    __typename: "Todo",
+export type DeleteCheckinMutation = {
+  deleteCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type GetTodoQueryVariables = {
+export type GetCheckinQueryVariables = {
   id: string,
 };
 
-export type GetTodoQuery = {
-  getTodo:  {
-    __typename: "Todo",
+export type GetCheckinQuery = {
+  getCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type ListTodosQueryVariables = {
-  filter?: ModelTodoFilterInput | null,
+export type ListCheckinsQueryVariables = {
+  filter?: ModelCheckinFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
 };
 
-export type ListTodosQuery = {
-  listTodos:  {
-    __typename: "ModelTodoConnection",
+export type ListCheckinsQuery = {
+  listCheckins:  {
+    __typename: "ModelCheckinConnection",
     items:  Array< {
-      __typename: "Todo",
+      __typename: "Checkin",
       id: string,
-      name: string,
-      description: string | null,
+      userid: string,
+      location: string,
+      checkinTime: string,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -175,34 +182,37 @@ export type ListTodosQuery = {
   } | null,
 };
 
-export type OnCreateTodoSubscription = {
-  onCreateTodo:  {
-    __typename: "Todo",
+export type OnCreateCheckinSubscription = {
+  onCreateCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnUpdateTodoSubscription = {
-  onUpdateTodo:  {
-    __typename: "Todo",
+export type OnUpdateCheckinSubscription = {
+  onUpdateCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
 };
 
-export type OnDeleteTodoSubscription = {
-  onDeleteTodo:  {
-    __typename: "Todo",
+export type OnDeleteCheckinSubscription = {
+  onDeleteCheckin:  {
+    __typename: "Checkin",
     id: string,
-    name: string,
-    description: string | null,
+    userid: string,
+    location: string,
+    checkinTime: string,
     createdAt: string,
     updatedAt: string,
   } | null,
