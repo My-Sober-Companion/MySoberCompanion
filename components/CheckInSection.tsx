@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     width: '70%',
-    backgroundColor: 'unset'
+    backgroundColor: 'traparent'
   },
   title: {
     fontSize: 20,

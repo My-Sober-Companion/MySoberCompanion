@@ -10,7 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import CheckInScreen from '../screens/CheckInScreen';
 import { BottomTabParamList, TabHomeParamList, TabThreeParamList, TabTwoParamList } from '../types';
 import { Icon } from '@expo/vector-icons/build/createIconSet';
-import { boldFontFamily, defaultFontFamily, View } from '../components/Themed';
+import { boldFontFamily, defaultFontFamily, defaultLight, View } from '../components/Themed';
 import { FontAwesome } from '@expo/vector-icons'; 
 import { Text } from '../components/Themed';
 
@@ -64,7 +64,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
+        options={{ headerTitle: 'Home Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily, color: defaultLight} }}
       />
     </HomeStack.Navigator>
   );
@@ -78,7 +78,7 @@ function CheckInNavigator() {
       <CheckInStack.Screen
         name="CheckInScreen"
         component={CheckInScreen}
-        options={{ headerTitle: 'Check Ins', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
+        options={{ headerTitle: 'Check Ins', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily, color: defaultLight} }}
       />
     </CheckInStack.Navigator>
   );
@@ -93,7 +93,7 @@ function ProfileNavigator() {
       <ProfileStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
+        options={{ headerTitle: 'Profile', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily, color: defaultLight} }}
       />
     </ProfileStack.Navigator>
   );

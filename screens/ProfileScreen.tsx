@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   },
   modal: {
     elevation: 2,
-    borderColor: 'none',
+    borderColor: 'transparent',
     borderWidth: 0
   }
 });

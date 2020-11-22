@@ -6,6 +6,8 @@ import useColorScheme from '../hooks/useColorScheme';
 export const defaultFontFamily = 'Montserrat_400Regular';
 export const boldFontFamily = 'Montserrat_700Bold';
 
+export const defaultLight = '#2958E5';
+
 export function useThemeColor(
   props: { light?: string; dark?: string },
   colorName: keyof typeof Colors.light & keyof typeof Colors.dark
@@ -30,7 +32,7 @@ export type TextProps = ThemeProps & DefaultText['props'];
 export type ViewProps = ThemeProps & DefaultView['props'];
 
 export function Text(props: TextProps) {
-  const { style, lightColor = '#2958E5', darkColor, fontFamily = defaultFontFamily, ...otherProps } = props;
+  const { style, lightColor = defaultLight, darkColor, fontFamily = defaultFontFamily, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
   return <DefaultText style={[{ color, fontFamily }, style]} {...otherProps} />;

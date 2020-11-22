@@ -5,9 +5,9 @@ import { Text, View } from '../components/Themed';
 
 export default function AreYouOkay() {
   return (
-    <View style={{width:'70%', backgroundColor: 'unset'}}>
+    <View style={{width:'70%', backgroundColor: 'transparent'}}>
         <Text style={styles.title}>Are you okay?</Text>
-        <View style={[styles.container, {backgroundColor: 'unset'}]}>
+        <View style={[styles.container, {backgroundColor: 'transparent'}]}>
             <View style={styles.buttons}>
               <Button
                 title="Yes"

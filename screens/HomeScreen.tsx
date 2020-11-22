@@ -36,7 +36,7 @@ const badges: Badge[] = [
   {
     name: 'Fledgling',
     picture: P3,
-    requirement: '3 Hour Check In',
+    requirement: '6 Hour Check In',
     date: '',
   },
   {
@@ -103,11 +103,13 @@ const styles = StyleSheet.create({
     width: 150,
   },
   support: {
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    color: 'black',
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'black',
   },
   separator: {
     marginVertical: 15,
@@ -122,7 +124,8 @@ const styles = StyleSheet.create({
   checkins: {
     fontWeight: 'bold',
     fontSize: 20,
-     textAlign: 'center'
+    textAlign: 'center',
+    color: 'black',
   },
   badge: {
     height: 70,
@@ -132,10 +135,12 @@ const styles = StyleSheet.create({
   },
   mediumBold: {
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+    color: 'black',
   },
   medium: {
-    fontSize: 16
+    fontSize: 16,
+    color: 'black',
   },
   circle: {
     borderRadius: 50,
@@ -144,8 +149,9 @@ const styles = StyleSheet.create({
     shadowOffset: {height: 2, width: 2},
     padding: 15,
     backgroundColor: 'yellow',
-    fontSize: 30,
-    fontWeight: 'bold'
+    fontSize: 36,
+    fontWeight: 'bold',
+    color: 'black',
   },
   flexList: {
     flex: 1,
