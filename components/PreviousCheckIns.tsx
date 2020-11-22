@@ -1,7 +1,7 @@
 import React, { useEffect, useState }  from 'react';
-import { StyleSheet, Button, Alert, TextInput } from 'react-native';
+import { StyleSheet, Button, Alert, TextInput, Image } from 'react-native';
 import Accordion from '../components/Accordion';
-
+import PlaceholderMap from '../assets/images/map.png'
 import { Text, View } from '../components/Themed';
 import { API, graphqlOperation } from 'aws-amplify'
 import { createCheckin } from '../graphql/mutations'
@@ -21,7 +21,6 @@ export default function PreviousCheckIns() {
       const checkinData = await API.graphql(graphqlOperation(listCheckins))
       const checkins = checkinData.data.listCheckins.items
       setCheckins(checkins)
-      console.log(checkins)
     } catch (err) { console.log('error fetching checkins') }
   }
 
@@ -29,10 +28,19 @@ export default function PreviousCheckIns() {
     <View style={styles.container}>
       <Text style={styles.title}>Previous Check Ins</Text>
       {
-      checkins.map((checkin, index) => (
-          <Accordion title={<Text style={styles.bodyText}>{checkin.createdAt}</Text>} style={styles.paper}>
+      checkins.sort((a,b) => {
+        return new Date(a.createdAt).getTime() - 
+        new Date(b.createdAt).getTime()
+      }).reverse().map((checkin, index) => (
+          <Accordion title={<Text style={styles.bodyText}>{new Intl.DateTimeFormat("en-US", {
+          month: "numeric",
+          day: "2-digit",
+          year: "numeric",
+          hour: 'numeric', minute: 'numeric', second: 'numeric'
+        }).format(new Date(checkin.createdAt))}</Text>} style={styles.paper}>
             <View key={checkin.id ? checkin.id : index} style={styles.checkin}>
-              <Text style={styles.checkinName}>Time: {checkin.createdAt}, Place: {checkin.location}</Text>
+              <Image style={styles.image} source={{uri: PlaceholderMap}}/>            
+              <Text style={styles.checkinLocation}>Location: {checkin.location}</Text>
             </View>
           </Accordion>
         ))
@@ -58,9 +66,10 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
      marginVertical: 8,
   },
-  checkinName:{
+  checkinLocation:{
     flexDirection: 'row',
     alignItems: 'center',
+    textAlign: 'center',
   },
   checkin:{
   },
@@ -74,6 +83,11 @@ const styles = StyleSheet.create({
   fixToText: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  image: {
+    height: 225,
+    width: 300,
+    alignItems: 'center',
   },
   separator: {
     marginVertical: 15,

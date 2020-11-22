@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { Modal, ScrollView, StyleSheet, Image } from 'react-native';
 import { Button, Text, View } from '../components/Themed';
 import PlaceholderMap from '../assets/images/map.png'
+import { DataTable } from 'react-native-paper';
+import Accordion from '../components/Accordion';
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -11,18 +13,11 @@ const Separator = () => (
 export default function ProfileScreen() {
   const [isManageTeamOpen, setIsManageTeamOpen] = useState(false);
   const [isManageDenyOpen, setIsManageDenyOpen] = useState(false);
-  
+  const [isCurrentStatusOpen, setIsCurrentStatusOpen] = useState(false);
   function onPress() {
     alert('alter login credentials or security preferences');
   }
-
-  function onPress3() {
-    alert('update list of phone numbers and places to avoid');
-  }
-
-  function onPress4() {
-    alert('view current location and health metrics');
-  }
+  
 
   return (
     <View style={styles.container}>
@@ -40,7 +35,13 @@ export default function ProfileScreen() {
             <ProfileManageDenylist />
             </Modal>
           }
-          {!isManageTeamOpen && !isManageDenyOpen &&
+          {isCurrentStatusOpen &&
+          <Modal animationType="slide" style={styles.modal} transparent>
+          <Button style={styles.button} title="X" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)} />
+          <ProfileCurrentStatus />
+          </Modal>
+          }
+          {!isManageTeamOpen && !isManageDenyOpen && !isCurrentStatusOpen &&
             <View style={styles.container}>
               <Separator/>
               <Text style={styles.title}>Manage Profile Details</Text>
@@ -48,7 +49,7 @@ export default function ProfileScreen() {
               <Button style={styles.button} title="Login and Security" onPress={onPress}/>
               <Button style={styles.button} title="Manage Team" onPress={() => setIsManageTeamOpen(!isManageTeamOpen)}/>
               <Button style={styles.button} title="Manage Denylist" onPress={() => setIsManageDenyOpen(!isManageDenyOpen)}/>
-              <Button style={styles.button} title="Current Status" onPress={onPress4}/>
+              <Button style={styles.button} title="Current Status" onPress={() => setIsCurrentStatusOpen(!isCurrentStatusOpen)}/>
               <Separator/>
             </View>
           }
@@ -61,6 +62,9 @@ export default function ProfileScreen() {
 export function ProfileManageTeam(){
   function onPress() {
     alert('Change team member settings');
+  }
+  function onPress2() {
+    alert('Add more team members');
   }
   return (
     <View style={styles.container}>
@@ -89,6 +93,7 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
+      <Button style={styles.button} title="Add More" onPress={onPress2}></Button>
     </View>
   );
 }
@@ -120,7 +125,47 @@ export function ProfileManageDenylist(){
       <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
-      <Button style={styles.button} title="Add" onPress={onPress2}></Button>
+      <Button style={styles.button} title="Add More" onPress={onPress2}></Button>
+    </View>
+  )
+}
+
+export function ProfileCurrentStatus(){
+  //have drop downs for current location, current health stats, and most recent check in?
+  const HealthMetricsTable = () => (
+    <DataTable>
+      <DataTable.Row>
+        <DataTable.Cell>Pulse</DataTable.Cell>
+        <DataTable.Cell numeric>83 BPM</DataTable.Cell>
+      </DataTable.Row>
+  
+      <DataTable.Row>
+        <DataTable.Cell>Sp02</DataTable.Cell>
+        <DataTable.Cell numeric>98%</DataTable.Cell>
+      </DataTable.Row>
+  
+      <DataTable.Row>
+        <DataTable.Cell>Body Temp</DataTable.Cell>
+        <DataTable.Cell numeric>98.9 F</DataTable.Cell>
+      </DataTable.Row>
+  
+      <DataTable.Row>
+        <DataTable.Cell>Breaths PM</DataTable.Cell>
+        <DataTable.Cell numeric>14</DataTable.Cell>
+      </DataTable.Row>
+    </DataTable>
+  );
+  return(
+    <View style={styles.container}>
+      <Separator></Separator>
+      <Text style={styles.title}>Current Status</Text>
+      <Separator></Separator>
+      <Accordion title={<Text style={styles.subtitle}>Current Location</Text>} style={styles.paper}>
+          <Image style={styles.image} source={{uri: PlaceholderMap}}/>
+        </Accordion>
+        <Accordion title={<Text style={styles.subtitle}>Current Health Metrics</Text>} style={styles.paper}>
+          <HealthMetricsTable/>
+        </Accordion>
     </View>
   )
 }
@@ -174,5 +219,14 @@ const styles = StyleSheet.create({
     elevation: 2,
     borderColor: 'transparent',
     borderWidth: 0
+  },
+  paper: {
+    backgroundColor: 'white',
+    shadowColor: 'black',
+    shadowRadius: 10,
+    shadowOffset: { height: 4, width: 0 },
+    shadowOpacity: 0.1,
+    elevation: 3,
+    padding: 5,
   }
 });
