@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Modal, ScrollView, StyleSheet } from 'react-native';
+import { Modal, ScrollView, StyleSheet, Image } from 'react-native';
 import { Button, Text, View } from '../components/Themed';
+import PlaceholderMap from '../assets/images/map.png'
 
 const Separator = () => (
   <View style={styles.separator} />
@@ -9,6 +10,8 @@ const Separator = () => (
 
 export default function ProfileScreen() {
   const [isManageTeamOpen, setIsManageTeamOpen] = useState(false);
+  const [isManageDenyOpen, setIsManageDenyOpen] = useState(false);
+  
   function onPress() {
     alert('alter login credentials or security preferences');
   }
@@ -65,8 +68,54 @@ export function ProfileManageTeam(){
       <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
       <Button style={styles.button2} title="Edit" onPress={onPress}/>
       <Separator/>
+      <Separator/>
+      <Text style={styles.subtitle}>Team Member: Sally</Text>
+      <Text style={styles.bodytext}>Phone Number: (123) 468-6584</Text>
+      <Text style={styles.subtitle2}>Permissions:</Text>
+      <Text style={styles.bodytext}>Daily Check Ins</Text>
+      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Separator/>
+      <Separator/>
+      <Text style={styles.subtitle}>Team Member: Bob (Sponsor)</Text>
+      <Text style={styles.bodytext}>Phone Number: (123) 364-6565</Text>
+      <Text style={styles.subtitle2}>Permissions:</Text>
+      <Text style={styles.bodytext}>Notified in case of Denylist Violation</Text>
+      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Separator/>
     </View>
   );
+}
+
+export function ProfileManageDenylist(){
+  function onPress(){
+    alert ('Change Denylist Entry')
+  }
+  function onPress2(){
+    alert ('Add Denylist Entry')
+  }
+
+  return(
+    <View style={styles.container}>
+      <Separator/>
+      <Text style={styles.title}>Manage Denylist Entries</Text>
+      <Separator></Separator>
+      <Text style={styles.subtitle}>Phone Number</Text>
+      <Text style={styles.bodytext}>#: (456) 467-4656</Text>
+      <Text style={styles.bodytext}>Flag: texts and calls</Text>
+      <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
+      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Separator/>
+      <Text style={styles.subtitle}>Location</Text>
+      <View style={styles.container}>
+        <Image style={styles.image} source={{uri: PlaceholderMap}}/>
+      </View>
+      <Text style={styles.bodytext}>Flag: within 1 mile radius</Text>
+      <Text style={styles.bodytext}>Notify: Mom, Bob</Text>
+      <Button style={styles.button2} title="Edit" onPress={onPress}/>
+      <Separator/>
+      <Button style={styles.button} title="Add" onPress={onPress2}></Button>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -75,6 +124,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%'
+  },
+  image: {
+    height: 150,
+    width: 200,
   },
   title: {
     fontSize: 20,
