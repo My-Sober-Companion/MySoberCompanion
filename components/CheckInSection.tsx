@@ -52,16 +52,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    width: '70%',
-    backgroundColor: 'transparent'
+    width: '85%',
+    // backgroundColor: 'traparent'
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
      marginVertical: 8,
-  },
-  checkinName:{
-
   },
   checkin:{
 

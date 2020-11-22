@@ -34,7 +34,7 @@ const MessageInputMultiline = () => {
   // color.
   return (
     <View  style={{
-        marginTop: 10,
+        marginTop: 15,
         backgroundColor: '#F5F7FF',
       }}>
       <TextInput
@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
      marginVertical: 8,
   },
   textbox: {
-   
   },
   buttons: {
     width: '30%',
