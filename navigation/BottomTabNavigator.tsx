@@ -1,4 +1,4 @@
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
@@ -9,6 +9,8 @@ import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import CheckInScreen from '../screens/CheckInScreen';
 import { BottomTabParamList, TabHomeParamList, TabThreeParamList, TabTwoParamList } from '../types';
+import { Icon } from '@expo/vector-icons/build/createIconSet';
+import { boldFontFamily, defaultFontFamily } from '../components/Themed';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -23,21 +25,21 @@ export default function BottomTabNavigator() {
         name="Home"
         component={HomeNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-home" color={color} comp={Ionicons} />,
         }}
       />
       <BottomTab.Screen
         name="CheckIn"
         component={CheckInNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="target" color={color} comp={Feather} />,
         }}
       />
       <BottomTab.Screen
         name="Profile"
         component={ProfileNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-person" color={color} comp={Ionicons} />,
         }}
       />
     </BottomTab.Navigator>
@@ -46,8 +48,8 @@ export default function BottomTabNavigator() {
 
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
-function TabBarIcon(props: { name: string; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
+function TabBarIcon(props: { name: string; color: string, comp: Icon<string, string> }) {
+  return <props.comp size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -60,7 +62,7 @@ function HomeNavigator() {
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        options={{ headerTitle: 'Home Screen Title' }}
+        options={{ headerTitle: 'Home Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </HomeStack.Navigator>
   );
@@ -74,7 +76,7 @@ function CheckInNavigator() {
       <CheckInStack.Screen
         name="CheckInScreen"
         component={CheckInScreen}
-        options={{ headerTitle: 'Check Ins' }}
+        options={{ headerTitle: 'Check Ins', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </CheckInStack.Navigator>
   );
@@ -88,7 +90,7 @@ function ProfileNavigator() {
       <ProfileStack.Screen
         name="ProfileScreen"
         component={ProfileScreen}
-        options={{ headerTitle: 'Profile Screen Title' }}
+        options={{ headerTitle: 'Profile Screen Title', headerTitleAlign: 'center', headerTitleStyle: {textAlign: 'center', fontFamily: boldFontFamily} }}
       />
     </ProfileStack.Navigator>
   );
