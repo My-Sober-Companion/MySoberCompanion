@@ -11,7 +11,7 @@ export interface AccordionProps {
 
 const Accordion: React.FC<AccordionProps> = ({children, title, style}) => {
   return (
-    <View style={styles.AccordionView}>
+    <View style={[styles.AccordionView, style]}>
       <List.Section>
         <List.Accordion title={title} titleStyle={styles.title}>
             {children}
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   },
   AccordionView: {
     width: '85%',
+    marginVertical: 7
   },
 });
   
